@@ -6,14 +6,25 @@ import { Phone, Mail, MapPin, Facebook, Instagram, Youtube, Shield, Award, Zap, 
 import { PHONE_MAIN, SITE_NAME } from '@/lib/utils';
 
 const BRANDS_LINKS = [
-  { label: 'Renault occasion', href: '/voitures-occasion?marque=Renault' },
-  { label: 'Peugeot occasion', href: '/voitures-occasion?marque=Peugeot' },
-  { label: 'Citroën occasion', href: '/voitures-occasion?marque=Citroën' },
-  { label: 'Volkswagen occasion', href: '/voitures-occasion?marque=Volkswagen' },
-  { label: 'BMW occasion', href: '/voitures-occasion?marque=BMW' },
-  { label: 'Mercedes occasion', href: '/voitures-occasion?marque=Mercedes-Benz' },
-  { label: 'Audi occasion', href: '/voitures-occasion?marque=Audi' },
-  { label: 'Toyota occasion', href: '/voitures-occasion?marque=Toyota' },
+  { label: 'Renault occasion', href: '/voitures-occasion/marque/renault' },
+  { label: 'Peugeot occasion', href: '/voitures-occasion/marque/peugeot' },
+  { label: 'Citroën occasion', href: '/voitures-occasion/marque/citroen' },
+  { label: 'Volkswagen occasion', href: '/voitures-occasion/marque/volkswagen' },
+  { label: 'BMW occasion', href: '/voitures-occasion/marque/bmw' },
+  { label: 'Mercedes occasion', href: '/voitures-occasion/marque/mercedes-benz' },
+  { label: 'Audi occasion', href: '/voitures-occasion/marque/audi' },
+  { label: 'Toyota occasion', href: '/voitures-occasion/marque/toyota' },
+];
+
+const CITY_LINKS = [
+  { label: 'Occasion Nancy', href: '/voitures-occasion/ville/nancy' },
+  { label: 'Occasion Metz', href: '/voitures-occasion/ville/metz' },
+  { label: 'Occasion Bordeaux', href: '/voitures-occasion/ville/bordeaux' },
+  { label: 'Occasion Rennes', href: '/voitures-occasion/ville/rennes' },
+  { label: 'Occasion Strasbourg', href: '/voitures-occasion/ville/strasbourg' },
+  { label: 'Occasion Nantes', href: '/voitures-occasion/ville/nantes' },
+  { label: 'Occasion Épinal', href: '/voitures-occasion/ville/epinal' },
+  { label: 'Occasion Thionville', href: '/voitures-occasion/ville/thionville' },
 ];
 
 const SERVICES_LINKS = [
@@ -174,7 +185,7 @@ export default function Footer() {
 
       {/* Main footer content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-8">
           {/* Column 1: Brand */}
           <div className="lg:col-span-2">
             {/* Logo */}
@@ -235,11 +246,23 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Nos voitures */}
+          {/* Column 2: Nos voitures (marques) */}
           <div>
-            <FooterSectionTitle>Nos voitures</FooterSectionTitle>
+            <FooterSectionTitle>Nos marques</FooterSectionTitle>
             <ul className="space-y-2.5">
               {BRANDS_LINKS.map((link) => (
+                <li key={link.href}>
+                  <FooterLink href={link.href}>{link.label}</FooterLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 2b: Nos villes */}
+          <div>
+            <FooterSectionTitle>Nos villes</FooterSectionTitle>
+            <ul className="space-y-2.5">
+              {CITY_LINKS.map((link) => (
                 <li key={link.href}>
                   <FooterLink href={link.href}>{link.label}</FooterLink>
                 </li>

@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/utils';
-import { getAllVehicles } from '@/repository/vehicles';
+import { getAllVehicles, getAllBrands } from '@/repository/vehicles';
 import { getAllAgencies } from '@/repository/agencies';
 import { getAllPosts } from '@/repository/blog';
 import { BUDGET_RANGES, FUEL_TYPES } from '@/lib/utils';
+import { SEO_CITIES } from '@/lib/seo-cities';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [vehicles, agencies, posts] = await Promise.all([
@@ -106,6 +107,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
+  // ── SEO pages: city landing pages ─────────────────────────────────────────
+  const cityPages = SEO_CITIES.map((city) => ({
+    url: `${SITE_URL}/voitures-occasion/ville/${city.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'daily' as const,
+    priority: 0.7,
+  }));
+
+  // ── SEO pages: brand landing pages (new /marque/ route) ──────────────────
+  const allBrands = await getAllBrands();
+  const brandLandingPages = allBrands.map((brand) => {
+    const slug = brand
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+    return {
+      url: `${SITE_URL}/voitures-occasion/marque/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.7,
+    };
+  });
+
   return [
     ...staticPages,
     ...legalPages,
@@ -116,5 +142,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...fuelPages,
     ...budgetPages,
     ...blogPages,
+    ...cityPages,
+    ...brandLandingPages,
   ] as MetadataRoute.Sitemap;
 }
