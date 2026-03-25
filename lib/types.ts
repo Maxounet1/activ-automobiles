@@ -54,6 +54,7 @@ export interface Agency {
   email: string;
   description: string;
   image: string;
+  heroImage?: string;
   lat: number;
   lng: number;
   openingHours: {

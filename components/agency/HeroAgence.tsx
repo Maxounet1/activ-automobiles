@@ -99,7 +99,7 @@ export default function HeroAgence({ agency }: HeroAgenceProps) {
     ? 'rgba(245,158,11,0.18)'
     : 'rgba(239,68,68,0.15)';
 
-  const heroImage = agency.image;
+  const heroImage = agency.heroImage || agency.image;
 
   return (
     <>

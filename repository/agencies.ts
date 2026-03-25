@@ -17,6 +17,7 @@ const AGENCIES: Agency[] = [
     description:
       "Bienvenue chez Activ Automobiles Nancy-Laxou, votre spécialiste de la vente de véhicules d'occasion premium dans la région Grand Est.",
     image: '/LaxouS.webp',
+    heroImage: '/Nancylaxouhero.webp',
     lat: 48.6847,
     lng: 6.1464,
     openingHours: [
@@ -52,6 +53,7 @@ const AGENCIES: Agency[] = [
     description:
       'Activ Automobiles Talange vous accueille dans son showroom moderne en Moselle.',
     image: '/TalangeS.webp',
+    heroImage: '/Talangehero.webp',
     lat: 49.2833,
     lng: 6.1697,
     openingHours: [
@@ -84,6 +86,7 @@ const AGENCIES: Agency[] = [
     description:
       "Activ Automobiles Épinal-Chavelot est votre référence pour l'achat d'un véhicule d'occasion de qualité dans les Vosges.",
     image: '/EpinalS.webp',
+    heroImage: '/Epinalhero.webp',
     lat: 48.1778,
     lng: 6.4286,
     openingHours: [
@@ -115,6 +118,7 @@ const AGENCIES: Agency[] = [
     description:
       'Activ Automobiles La Mothe-Achard vous accueille en Vendée, à deux pas des Achards.',
     image: '/LamotheachardS.webp',
+    heroImage: '/lamotheachardhero.webp',
     lat: 46.6167,
     lng: -1.65,
     openingHours: [
@@ -146,6 +150,7 @@ const AGENCIES: Agency[] = [
     description:
       "Activ Automobiles Bordeaux vous accueille à Saint-Jean-d'Illac, à proximité de Bordeaux.",
     image: '/BordeauxS.webp',
+    heroImage: '/bordeauxhero.webp',
     lat: 44.8135,
     lng: -0.8517,
     openingHours: [
@@ -177,6 +182,7 @@ const AGENCIES: Agency[] = [
     description:
       'Activ Automobiles Rennes vous accueille à Saint-Grégoire, au nord de Rennes.',
     image: '/RennesS.webp',
+    heroImage: '/renneshero.webp',
     lat: 48.1536,
     lng: -1.6668,
     openingHours: [
