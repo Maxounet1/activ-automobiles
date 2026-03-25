@@ -16,7 +16,7 @@ const AGENCIES: Agency[] = [
     email: 'Laxou@activ-automobiles.com',
     description:
       "Bienvenue chez Activ Automobiles Nancy-Laxou, votre spécialiste de la vente de véhicules d'occasion premium dans la région Grand Est.",
-    image: 'https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg',
+    image: '/LaxouS.webp',
     lat: 48.6847,
     lng: 6.1464,
     openingHours: [
@@ -51,7 +51,7 @@ const AGENCIES: Agency[] = [
     email: 'Talange@activ-automobiles.com',
     description:
       'Activ Automobiles Talange vous accueille dans son showroom moderne en Moselle.',
-    image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg',
+    image: '/TalangeS.webp',
     lat: 49.2833,
     lng: 6.1697,
     openingHours: [
@@ -83,7 +83,7 @@ const AGENCIES: Agency[] = [
     email: 'Epinal@activ-automobiles.com',
     description:
       "Activ Automobiles Épinal-Chavelot est votre référence pour l'achat d'un véhicule d'occasion de qualité dans les Vosges.",
-    image: 'https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg',
+    image: '/EpinalS.webp',
     lat: 48.1778,
     lng: 6.4286,
     openingHours: [
@@ -114,7 +114,7 @@ const AGENCIES: Agency[] = [
     email: 'Lamotheachard@activ-automobiles.com',
     description:
       'Activ Automobiles La Mothe-Achard vous accueille en Vendée, à deux pas des Achards.',
-    image: 'https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg',
+    image: '/LamotheachardS.webp',
     lat: 46.6167,
     lng: -1.65,
     openingHours: [
@@ -145,7 +145,7 @@ const AGENCIES: Agency[] = [
     email: 'Bordeaux@activ-automobiles.com',
     description:
       "Activ Automobiles Bordeaux vous accueille à Saint-Jean-d'Illac, à proximité de Bordeaux.",
-    image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg',
+    image: '/BordeauxS.webp',
     lat: 44.8135,
     lng: -0.8517,
     openingHours: [
@@ -176,7 +176,7 @@ const AGENCIES: Agency[] = [
     email: 'Rennes@activ-automobiles.com',
     description:
       'Activ Automobiles Rennes vous accueille à Saint-Grégoire, au nord de Rennes.',
-    image: 'https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg',
+    image: '/RennesS.webp',
     lat: 48.1536,
     lng: -1.6668,
     openingHours: [
