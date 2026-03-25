@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { MapPin, Phone, Clock, Shield, CreditCard, Truck, CheckCircle2, ChevronRight } from 'lucide-react';
 import { getVehiclesByAgency } from '@/repository/vehicles';
@@ -44,7 +45,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'website',
       images: [
         {
-          url: `${SITE_URL}/og/voitures-occasion.jpg`,
+          url: `${SITE_URL}${city.heroImage}`,
           width: 1200,
           height: 630,
           alt: `Voitures d'occasion à ${city.name} — Activ Automobiles`,
@@ -55,7 +56,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title,
       description,
-      images: [`${SITE_URL}/og/voitures-occasion.jpg`],
+      images: [`${SITE_URL}${city.heroImage}`],
     },
     robots: {
       index: true,
@@ -320,46 +321,70 @@ export default async function VillePage({ params }: PageProps) {
       />
 
       <div style={{ background: '#0B1829', minHeight: '100vh' }}>
-        {/* Hero band */}
+        {/* Hero image banner */}
+        <div className="relative w-full" style={{ height: 'clamp(280px, 40vw, 420px)' }}>
+          <Image
+            src={city.heroImage}
+            alt={`Vue de ${city.name}`}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          {/* Dark overlay */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(to bottom, rgba(11,24,41,0.45) 0%, rgba(11,24,41,0.85) 100%)',
+            }}
+          />
+          {/* Content over image */}
+          <div className="absolute inset-0 flex flex-col justify-end">
+            <div className="max-w-screen-xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-8">
+              {/* Breadcrumb */}
+              <nav aria-label="Fil d'Ariane" className="mb-4">
+                <ol
+                  className="flex items-center gap-2 text-xs flex-wrap"
+                  style={{ color: 'rgba(255,255,255,0.7)' }}
+                >
+                  <li>
+                    <Link href="/" className="hover:text-white transition-colors duration-150">
+                      Accueil
+                    </Link>
+                  </li>
+                  <li aria-hidden="true" className="select-none">
+                    /
+                  </li>
+                  <li>
+                    <Link
+                      href="/voitures-occasion"
+                      className="hover:text-white transition-colors duration-150"
+                    >
+                      Voitures d&apos;occasion
+                    </Link>
+                  </li>
+                  <li aria-hidden="true" className="select-none">
+                    /
+                  </li>
+                  <li className="text-white font-medium">{city.name}</li>
+                </ol>
+              </nav>
+
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight drop-shadow-lg">
+                Voiture d&apos;occasion à {city.name}
+              </h1>
+            </div>
+          </div>
+        </div>
+
+        {/* Description band below hero */}
         <div
           style={{
             background: 'linear-gradient(180deg, rgba(22,163,74,0.08) 0%, transparent 100%)',
             borderBottom: '1px solid rgba(255,255,255,0.06)',
           }}
         >
-          <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-            {/* Breadcrumb */}
-            <nav aria-label="Fil d'Ariane" className="mb-4">
-              <ol
-                className="flex items-center gap-2 text-xs flex-wrap"
-                style={{ color: 'rgba(255,255,255,0.45)' }}
-              >
-                <li>
-                  <Link href="/" className="hover:text-white transition-colors duration-150">
-                    Accueil
-                  </Link>
-                </li>
-                <li aria-hidden="true" className="select-none">
-                  /
-                </li>
-                <li>
-                  <Link
-                    href="/voitures-occasion"
-                    className="hover:text-white transition-colors duration-150"
-                  >
-                    Voitures d&apos;occasion
-                  </Link>
-                </li>
-                <li aria-hidden="true" className="select-none">
-                  /
-                </li>
-                <li className="text-white font-medium">{city.name}</li>
-              </ol>
-            </nav>
-
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight mb-3">
-              Voiture d&apos;occasion à {city.name} — Activ Automobiles
-            </h1>
+          <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <p
               className="text-base max-w-3xl leading-relaxed"
               style={{ color: 'rgba(255,255,255,0.55)' }}

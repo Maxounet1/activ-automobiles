@@ -16,14 +16,6 @@ const BRANDS_LINKS = [
   { label: 'Toyota occasion', href: '/voitures-occasion/marque/toyota' },
 ];
 
-const CITY_LINKS = [
-  { label: 'Occasion Nancy', href: '/voitures-occasion/ville/nancy' },
-  { label: 'Occasion Talange', href: '/voitures-occasion/ville/metz' },
-  { label: 'Occasion Épinal', href: '/voitures-occasion/ville/epinal' },
-  { label: 'Occasion Bordeaux', href: '/voitures-occasion/ville/bordeaux' },
-  { label: 'Occasion Rennes', href: '/voitures-occasion/ville/rennes' },
-  { label: 'Occasion La Mothe-Achard', href: '/voitures-occasion/ville/la-roche-sur-yon' },
-];
 
 const SERVICES_LINKS = [
   { label: 'Financement auto', href: '/financement' },
@@ -256,17 +248,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 2b: Nos villes */}
-          <div>
-            <FooterSectionTitle>Nos villes</FooterSectionTitle>
-            <ul className="space-y-2.5">
-              {CITY_LINKS.map((link) => (
-                <li key={link.href}>
-                  <FooterLink href={link.href}>{link.label}</FooterLink>
-                </li>
-              ))}
-            </ul>
-          </div>
+
 
           {/* Column 3: Services */}
           <div>
