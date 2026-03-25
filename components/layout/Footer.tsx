@@ -18,13 +18,11 @@ const BRANDS_LINKS = [
 
 const CITY_LINKS = [
   { label: 'Occasion Nancy', href: '/voitures-occasion/ville/nancy' },
-  { label: 'Occasion Metz', href: '/voitures-occasion/ville/metz' },
+  { label: 'Occasion Talange', href: '/voitures-occasion/ville/metz' },
+  { label: 'Occasion Épinal', href: '/voitures-occasion/ville/epinal' },
   { label: 'Occasion Bordeaux', href: '/voitures-occasion/ville/bordeaux' },
   { label: 'Occasion Rennes', href: '/voitures-occasion/ville/rennes' },
-  { label: 'Occasion Strasbourg', href: '/voitures-occasion/ville/strasbourg' },
-  { label: 'Occasion Nantes', href: '/voitures-occasion/ville/nantes' },
-  { label: 'Occasion Épinal', href: '/voitures-occasion/ville/epinal' },
-  { label: 'Occasion Thionville', href: '/voitures-occasion/ville/thionville' },
+  { label: 'Occasion La Mothe-Achard', href: '/voitures-occasion/ville/la-roche-sur-yon' },
 ];
 
 const SERVICES_LINKS = [
