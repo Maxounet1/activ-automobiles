@@ -71,7 +71,7 @@ export default function AdvancedSearchDrawer({
       brand: '',
       model: '',
       yearMin: 2015,
-      yearMax: 2024,
+      yearMax: new Date().getFullYear() + 1,
       transmission: '',
       category: '',
       minPower: 0,
@@ -90,7 +90,7 @@ export default function AdvancedSearchDrawer({
     if (filters.transmission) count++;
     if (filters.category) count++;
     if (filters.minPower > 0) count++;
-    if (filters.yearMin > 2015 || filters.yearMax < 2024) count++;
+    if (filters.yearMin > 2015 || filters.yearMax < new Date().getFullYear() + 1) count++;
     return count;
   }, [filters]);
 
@@ -206,7 +206,7 @@ export default function AdvancedSearchDrawer({
                 <div>
                   <label className="text-xs font-semibold mb-1 block" style={{ color: '#64748B' }}>À</label>
                   <input
-                    type="number" min={filters.yearMin} max="2024" value={filters.yearMax}
+                    type="number" min={filters.yearMin} max={new Date().getFullYear() + 1} value={filters.yearMax}
                     onChange={(e) => setFilters({ ...filters, yearMax: Number(e.target.value) })}
                     className="w-full px-3 py-2 rounded-lg text-sm font-semibold transition-all outline-none"
                     style={{ background: '#F8FAFC', border: '1.5px solid #E2E8F0', color: '#111111' }}

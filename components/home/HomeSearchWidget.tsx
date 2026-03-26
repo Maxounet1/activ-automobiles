@@ -15,7 +15,7 @@ const DEFAULT_ADVANCED = {
   brand: '',
   model: '',
   yearMin: 2015,
-  yearMax: 2024,
+  yearMax: new Date().getFullYear() + 1,
   transmission: '',
   category: '',
   minPower: 0,
@@ -57,7 +57,7 @@ export default function HomeSearchWidget({ vehicles = [] }: HomeSearchWidgetProp
     if (advancedFilters.transmission) count++;
     if (advancedFilters.category) count++;
     if (advancedFilters.minPower > 0) count++;
-    if (advancedFilters.yearMin > 2015 || advancedFilters.yearMax < 2024) count++;
+    if (advancedFilters.yearMin > 2015 || advancedFilters.yearMax < new Date().getFullYear() + 1) count++;
     return count;
   }, [advancedFilters]);
 
@@ -72,7 +72,7 @@ export default function HomeSearchWidget({ vehicles = [] }: HomeSearchWidgetProp
     if (advancedFilters.category) params.set('category', advancedFilters.category);
     if (advancedFilters.minPower > 0) params.set('power', String(advancedFilters.minPower));
     if (advancedFilters.yearMin > 2015) params.set('yearMin', String(advancedFilters.yearMin));
-    if (advancedFilters.yearMax < 2024) params.set('yearMax', String(advancedFilters.yearMax));
+    if (advancedFilters.yearMax < new Date().getFullYear() + 1) params.set('yearMax', String(advancedFilters.yearMax));
 
     const qs = params.toString();
     router.push(qs ? `/voitures-occasion?${qs}` : '/voitures-occasion');

@@ -45,7 +45,7 @@ export default function IntelligentSearchEngine({
     brand: '',
     model: '',
     yearMin: 2015,
-    yearMax: 2024,
+    yearMax: new Date().getFullYear() + 1,
     transmission: '',
     category: '',
     minPower: 0,
@@ -85,7 +85,7 @@ export default function IntelligentSearchEngine({
     if (advancedFilters.transmission) count++;
     if (advancedFilters.category) count++;
     if (advancedFilters.minPower > 0) count++;
-    if (advancedFilters.yearMin > 2015 || advancedFilters.yearMax < 2024) count++;
+    if (advancedFilters.yearMin > 2015 || advancedFilters.yearMax < new Date().getFullYear() + 1) count++;
     return count;
   }, [advancedFilters]);
 
