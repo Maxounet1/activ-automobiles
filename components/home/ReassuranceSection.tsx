@@ -140,16 +140,104 @@ export default function ReassuranceSection() {
 
         {/* ── Notre promesse ── */}
         <ScrollReveal delay={100}>
-          <div className="mt-10 text-center">
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: '#1A3F6F' }}>
-              Notre promesse
-            </p>
-            <h3 className="text-3xl sm:text-4xl font-extrabold leading-tight" style={{ color: '#111111' }}>
-              Une autre façon d&apos;acheter votre voiture
-            </h3>
-            <p className="mt-5 text-base sm:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-              Plus claire, plus humaine, sans stress.
-            </p>
+          <div className="mt-16 mb-4">
+            <div className="text-center mb-12 max-w-3xl mx-auto">
+              <p className="text-xs font-semibold tracking-[0.22em] uppercase mb-4" style={{ color: '#1A3F6F' }}>
+                Notre promesse
+              </p>
+              <h3 className="text-3xl sm:text-4xl font-extrabold leading-tight mb-5" style={{ color: '#111111' }}>
+                Une autre façon d&apos;acheter votre voiture
+              </h3>
+              <p className="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                Plus claire, plus humaine, sans stress. Nous avons repensé chaque étape pour que l&apos;achat d&apos;un véhicule redevienne un moment simple et agréable.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+              {[
+                {
+                  step: '01',
+                  title: 'Transparence totale',
+                  desc: 'Historique complet, rapport de contrôle, photos HD, prix net sans frais cachés. Vous savez exactement ce que vous achetez avant même de vous déplacer.',
+                  icon: (
+                    <svg viewBox="0 0 32 32" fill="none" className="w-7 h-7">
+                      <circle cx="16" cy="16" r="14" stroke="#1A3F6F" strokeWidth="1.5" strokeDasharray="4 3" />
+                      <path d="M12 16.5l3 3 5.5-6" stroke="#1A3F6F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  ),
+                },
+                {
+                  step: '02',
+                  title: 'Garantie & sérénité',
+                  desc: 'Tous nos véhicules sont garantis 12 mois minimum, extensible à 24 mois. Assistance 24h/24 et prise en charge complète en cas de panne.',
+                  icon: (
+                    <svg viewBox="0 0 32 32" fill="none" className="w-7 h-7">
+                      <path d="M16 3l10 5v8c0 6.5-4.5 11.5-10 13.5C10.5 27.5 6 22.5 6 16V8l10-5z" stroke="#1A3F6F" strokeWidth="1.5" />
+                      <path d="M12 16l3 3 5-5" stroke="#1A3F6F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  ),
+                },
+                {
+                  step: '03',
+                  title: 'Accompagnement de A à Z',
+                  desc: 'Un interlocuteur dédié du premier contact à la remise des clés. Financement, reprise, carte grise, livraison — on gère tout pour vous.',
+                  icon: (
+                    <svg viewBox="0 0 32 32" fill="none" className="w-7 h-7">
+                      <circle cx="16" cy="11" r="5" stroke="#1A3F6F" strokeWidth="1.5" />
+                      <path d="M6 27c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#1A3F6F" strokeWidth="1.5" strokeLinecap="round" />
+                      <path d="M22 14l3 3 3-3" stroke="#1A3F6F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  ),
+                },
+              ].map(({ step, title, desc, icon }, idx) => (
+                <ScrollReveal key={step} delay={idx * 100} direction="up">
+                  <div
+                    className="relative rounded-2xl p-7 h-full group"
+                    style={{
+                      background: 'linear-gradient(160deg, #f8fafd 0%, #edf2f9 100%)',
+                      border: '1px solid rgba(26,63,111,0.10)',
+                      transition: 'transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease',
+                    }}
+                    onMouseEnter={e => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.transform = 'translateY(-3px)';
+                      el.style.boxShadow = '0 12px 32px rgba(26,63,111,0.12)';
+                      el.style.borderColor = 'rgba(26,63,111,0.25)';
+                    }}
+                    onMouseLeave={e => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.transform = 'translateY(0)';
+                      el.style.boxShadow = 'none';
+                      el.style.borderColor = 'rgba(26,63,111,0.10)';
+                    }}
+                  >
+                    {/* Step number */}
+                    <span
+                      className="absolute top-5 right-6 text-5xl font-black leading-none select-none"
+                      style={{ color: 'rgba(26,63,111,0.06)' }}
+                      aria-hidden="true"
+                    >
+                      {step}
+                    </span>
+
+                    {/* Icon */}
+                    <div
+                      className="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-5"
+                      style={{ background: 'rgba(26,63,111,0.08)', border: '1px solid rgba(26,63,111,0.12)' }}
+                    >
+                      {icon}
+                    </div>
+
+                    <h4 className="text-lg font-bold mb-3" style={{ color: '#111111' }}>
+                      {title}
+                    </h4>
+                    <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>
+                      {desc}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </ScrollReveal>
 
