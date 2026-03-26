@@ -287,9 +287,22 @@ function mapVehicle(v: SpiderVOVehicle): Vehicle {
 async function fetchAndParseSpiderVOFeed(): Promise<Vehicle[]> {
   console.log('[spidervo-data] Fetching SpiderVO XML feed...');
 
-  const resp = await fetch(SPIDER_VO_URL, {
-    next: { revalidate: 3600 },
-  });
+  // SpiderVO XML is ~8MB and can take 15-20s to respond
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 55000); // 55s timeout (Vercel allows 60s)
+
+  let resp: Response;
+  try {
+    resp = await fetch(SPIDER_VO_URL, {
+      next: { revalidate: 3600 },
+      signal: controller.signal,
+    });
+  } catch (err) {
+    clearTimeout(timeout);
+    console.error(`[spidervo-data] Fetch failed:`, err);
+    return [];
+  }
+  clearTimeout(timeout);
 
   if (!resp.ok) {
     console.error(`[spidervo-data] Failed to fetch feed: HTTP ${resp.status}`);

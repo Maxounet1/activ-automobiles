@@ -14,6 +14,9 @@ import { getAllAgencies } from '@/repository/agencies';
 import { getAllReviews } from '@/repository/reviews';
 import { SITE_URL, SITE_NAME } from '@/lib/utils';
 
+// Force SSG with ISR — regenerate every hour
+export const revalidate = 3600;
+
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {

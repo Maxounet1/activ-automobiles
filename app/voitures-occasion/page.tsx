@@ -3,7 +3,8 @@ import { getAllVehicles } from '@/repository/vehicles';
 import { SITE_URL } from '@/lib/utils';
 import CatalogClient from './CatalogClient';
 
-// Note: metadata is in layout.tsx
+// Force SSG with ISR — regenerate every hour
+export const revalidate = 3600;
 
 export default async function VoituresOccasionPage() {
   const vehicles = await getAllVehicles().catch(() => []);
