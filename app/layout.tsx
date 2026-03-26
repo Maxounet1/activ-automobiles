@@ -5,7 +5,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Toaster } from '@/components/ui/toaster';
 import ScrollProgressBar from '@/components/common/ScrollProgressBar';
-import SocialProofToast from '@/components/common/SocialProofToast';
+// SocialProofToast removed — dark pattern incompatible with premium positioning
 import { ComparatorProvider } from '@/lib/comparator-store';
 import { WebVitals } from './web-vitals';
 import GoogleAnalytics from '@/components/common/GoogleAnalytics';
@@ -137,7 +137,6 @@ export default function RootLayout({
           <Footer />
           <ClientComparatorBar />
           <Toaster />
-          <SocialProofToast />
           <ClientCookieBanner />
         </ComparatorProvider>
       </body>

@@ -98,7 +98,8 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Link
                 href="/voitures-occasion"
-                className="group inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-4 rounded-xl font-bold text-sm sm:text-base text-white btn-cta-primary focus-visible:outline-none"
+                className="group inline-flex items-center justify-center gap-2.5 px-7 sm:px-10 py-4 sm:py-5 rounded-xl font-bold text-sm sm:text-base text-white btn-cta-primary focus-visible:outline-none"
+                style={{ background: 'linear-gradient(135deg, #E97B1F 0%, #D4690F 100%)', boxShadow: '0 6px 24px rgba(233,123,31,0.45)' }}
               >
                 Voir nos véhicules
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-hover:translate-x-1.5" />
@@ -106,8 +107,8 @@ export default function HeroSection() {
 
               <Link
                 href="/services/reprise"
-                className="group inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-4 rounded-xl font-bold text-sm sm:text-base text-white border transition-colors duration-200 hover:bg-white/12"
-                style={{ borderColor: 'rgba(255,255,255,0.28)', backdropFilter: 'blur(8px)', background: 'rgba(255,255,255,0.05)' }}
+                className="group inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-4 sm:py-5 rounded-xl font-bold text-sm sm:text-base text-white transition-all duration-200 hover:opacity-90"
+                style={{ background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(12px)', border: '1.5px solid rgba(255,255,255,0.30)' }}
               >
                 Estimer ma reprise
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-hover:translate-x-1.5" />

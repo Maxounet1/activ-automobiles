@@ -243,10 +243,19 @@ export default function CatalogClient({ vehicles, brands, cities }: CatalogClien
                 Voitures d&apos;occasion
               </h1>
               <p className="text-sm mt-2 text-white/50 font-medium">
-                <motion.span key={filteredVehicles.length} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-white/80 font-black">
-                  {filteredVehicles.length}
-                </motion.span>
-                {' '}véhicule{filteredVehicles.length !== 1 ? 's' : ''} · Contrôlés, garantis et financés
+                {vehicles.length === 0 ? (
+                  <span className="inline-flex items-center gap-2">
+                    <span className="inline-block w-20 h-5 rounded-md bg-white/10 animate-pulse" />
+                    <span>véhicules en cours de chargement…</span>
+                  </span>
+                ) : (
+                  <>
+                    <motion.span key={filteredVehicles.length} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-white/80 font-black">
+                      {filteredVehicles.length}
+                    </motion.span>
+                    {' '}véhicule{filteredVehicles.length !== 1 ? 's' : ''} · Contrôlés, garantis et financés
+                  </>
+                )}
               </p>
             </div>
           </div>
@@ -298,16 +307,23 @@ export default function CatalogClient({ vehicles, brands, cities }: CatalogClien
 
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between mb-6">
-              <motion.p
-                key={filteredVehicles.length}
-                initial={{ opacity: 0, y: -4 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-sm"
-                style={{ color: '#64748B' }}
-              >
-                <span className="font-black text-base" style={{ color: '#0F172A' }}>{filteredVehicles.length}</span>
-                {' '}résultat{filteredVehicles.length !== 1 ? 's' : ''}
-              </motion.p>
+              {vehicles.length === 0 ? (
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-10 h-5 rounded bg-gray-200 animate-pulse" />
+                  <span className="text-sm" style={{ color: '#64748B' }}>résultats</span>
+                </div>
+              ) : (
+                <motion.p
+                  key={filteredVehicles.length}
+                  initial={{ opacity: 0, y: -4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-sm"
+                  style={{ color: '#64748B' }}
+                >
+                  <span className="font-black text-base" style={{ color: '#0F172A' }}>{filteredVehicles.length}</span>
+                  {' '}résultat{filteredVehicles.length !== 1 ? 's' : ''}
+                </motion.p>
+              )}
 
               <div className="flex items-center gap-2">
                 <div className="relative">

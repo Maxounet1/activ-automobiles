@@ -108,12 +108,16 @@ export default function CatalogClient({ vehicles }: CatalogClientProps) {
         <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-3 text-brand-dark" style={{ letterSpacing: '-0.02em' }}>
           Voitures d&apos;occasion
         </h1>
-        <p className="text-base sm:text-lg text-brand-steel">
-          {vehicles.length > 0
-            ? `${vehicles.length} véhicules sélectionnés, garantis et finançables`
-            : 'Notre stock est en cours de chargement'
-          }
-        </p>
+        {vehicles.length > 0 ? (
+          <p className="text-base sm:text-lg text-brand-steel">
+            {vehicles.length} véhicules sélectionnés, garantis et finançables
+          </p>
+        ) : (
+          <div className="flex items-center justify-center gap-2 text-base sm:text-lg text-brand-steel">
+            <span className="inline-block w-32 h-6 rounded-lg animate-shimmer" />
+            <span>véhicules en cours de chargement…</span>
+          </div>
+        )}
       </div>
 
       <IntelligentSearchEngine

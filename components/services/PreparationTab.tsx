@@ -170,6 +170,45 @@ export default function PreparationTab() {
         </div>
       </div>
 
+      {/* Process Steps */}
+      <div className="mb-16">
+        <h3 className="text-2xl font-black text-gray-900 text-center mb-3">Le parcours de préparation</h3>
+        <p className="text-gray-400 text-sm text-center mb-10 max-w-xl mx-auto">
+          Chaque véhicule suit un protocole rigoureux avant d&apos;être proposé à la vente.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {[
+            { num: '01', title: 'Réception & inventaire', desc: 'Le véhicule est réceptionné, photographié et enregistré. Un état des lieux complet est réalisé.' },
+            { num: '02', title: 'Contrôle mécanique', desc: 'Inspection moteur, freins, boite, suspension, pneus. Les pièces défectueuses sont remplacées.' },
+            { num: '03', title: 'Diagnostic électronique', desc: 'Lecture complète des calculateurs. Aucun voyant ne doit rester allumé à la livraison.' },
+            { num: '04', title: 'Nettoyage & mise en vente', desc: 'Lavage complet, nettoyage intérieur, vérification documentaire. Le véhicule est prêt.' },
+          ].map((step) => (
+            <div key={step.num} className="relative bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#7C3D12]/30 hover:shadow-md transition-all">
+              <span className="text-4xl font-black leading-none mb-4 block" style={{ color: 'rgba(124,61,18,0.10)' }}>{step.num}</span>
+              <p className="font-bold text-gray-900 text-sm mb-2">{step.title}</p>
+              <p className="text-gray-400 text-xs leading-relaxed">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Mini FAQ */}
+      <div className="mb-16">
+        <h3 className="text-xl font-black text-gray-900 text-center mb-8">Questions fréquentes — Préparation</h3>
+        <div className="max-w-3xl mx-auto space-y-4">
+          {[
+            { q: 'Combien de temps dure la préparation d’un véhicule ?', a: 'En moyenne 3 à 5 jours ouvrés. Si des pièces doivent être commandées, le délai peut s’allonger de quelques jours.' },
+            { q: 'Le contrôle technique est-il inclus ?', a: 'Oui. Si le contrôle technique est expiré ou proche de l’être, le véhicule passe en centre agréé avant livraison, sans frais supplémentaires.' },
+            { q: 'Puis-je demander des travaux supplémentaires ?', a: 'Oui, nous pouvons réaliser des prestations complémentaires sur demande (polissage, traitement céramique, etc.). Contactez-nous pour un devis.' },
+          ].map((item) => (
+            <div key={item.q} className="rounded-2xl bg-white border border-gray-200 p-5">
+              <p className="font-bold text-sm text-gray-900 mb-2">{item.q}</p>
+              <p className="text-sm text-gray-500 leading-relaxed">{item.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* CTA */}
       <div className="text-center">
         <p className="text-gray-500 text-sm mb-6">

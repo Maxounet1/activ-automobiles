@@ -244,7 +244,7 @@
 }
 .btn-cta-primary:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 36px rgba(26,63,111,0.48);
+  box-shadow: 0 10px 36px rgba(233,123,31,0.55);
 }
 .btn-cta-primary:active {
   transform: translateY(0) scale(0.98);

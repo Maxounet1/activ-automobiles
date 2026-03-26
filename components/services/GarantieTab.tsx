@@ -95,6 +95,44 @@ export default function GarantieTab() {
         </p>
       </div>
 
+      {/* Process Steps */}
+      <div className="mb-14">
+        <h3 className="text-2xl font-black text-gray-900 text-center mb-3">Comment fonctionne la garantie ?</h3>
+        <p className="text-gray-400 text-sm text-center mb-10 max-w-xl mx-auto">
+          Un processus simple et transparent, sans franchise cachée.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          {[
+            { num: '01', title: 'Activation automatique', desc: 'La garantie 12 mois démarre automatiquement à la date de livraison ou de remise en agence. Aucune démarche de votre part.' },
+            { num: '02', title: 'Déclaration de sinistre', desc: 'En cas de panne couverte, contactez notre service client. Nous vous orientons vers un garage agréé proche de chez vous.' },
+            { num: '03', title: 'Réparation prise en charge', desc: 'Les réparations couvertes sont intégralement prises en charge. Vous récupérez votre véhicule sans frais supplémentaires.' },
+          ].map((step) => (
+            <div key={step.num} className="relative bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#0D7A4E]/30 hover:shadow-md transition-all">
+              <span className="text-4xl font-black leading-none mb-4 block" style={{ color: 'rgba(13,122,78,0.10)' }}>{step.num}</span>
+              <p className="font-bold text-gray-900 text-sm mb-2">{step.title}</p>
+              <p className="text-gray-400 text-xs leading-relaxed">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Mini FAQ */}
+      <div className="mb-14">
+        <h3 className="text-xl font-black text-gray-900 text-center mb-8">Questions fréquentes — Garantie</h3>
+        <div className="max-w-3xl mx-auto space-y-4">
+          {[
+            { q: 'La garantie est-elle valable dans toute la France ?', a: 'Oui. La garantie est nationale. Vous pouvez faire réparer votre véhicule dans n’importe quel garage agréé partenaire.' },
+            { q: 'Y a-t-il une franchise à payer ?', a: 'Les conditions précises dépendent du contrat de garantie. Dans la majorité des cas, il n’y a pas de franchise sur la garantie 12 mois incluse.' },
+            { q: 'Puis-je étendre la garantie après l’achat ?', a: 'Oui, vous pouvez souscrire une extension de garantie (24 ou 36 mois) au moment de l’achat ou dans les 30 jours suivants.' },
+          ].map((item) => (
+            <div key={item.q} className="rounded-2xl bg-white border border-gray-200 p-5">
+              <p className="font-bold text-sm text-gray-900 mb-2">{item.q}</p>
+              <p className="text-sm text-gray-500 leading-relaxed">{item.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Extension plans */}
       <div className="mb-14">
         <h3 className="text-2xl font-black text-gray-900 text-center mb-8">Étendez votre garantie jusqu&apos;à 36 mois</h3>

@@ -10,12 +10,12 @@ interface StockAgenceProps {
 }
 
 export default function StockAgence({ vehicles, city, agencyCity }: StockAgenceProps) {
-  const visibleVehicles = vehicles.slice(0, 6);
+  const visibleVehicles = vehicles.slice(0, 8);
   const remaining = vehicles.length - visibleVehicles.length;
 
   return (
     <section className="py-16 bg-gray-50 border-y border-gray-100">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
           <div>
             <div className="flex items-center gap-3 mb-3">
@@ -61,7 +61,7 @@ export default function StockAgence({ vehicles, city, agencyCity }: StockAgenceP
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {visibleVehicles.map((v) => (
                 <VehicleCard key={v.id} vehicle={v} />
               ))}
