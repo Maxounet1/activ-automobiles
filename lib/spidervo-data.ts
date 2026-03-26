@@ -349,6 +349,6 @@ async function fetchAndParseSpiderVOFeed(): Promise<Vehicle[]> {
 
 export const getSpiderVOVehicles = unstable_cache(
   fetchAndParseSpiderVOFeed,
-  ['spidervo-vehicles'],
+  ['spidervo-vehicles-v2'],
   { revalidate: 3600 }
 );
