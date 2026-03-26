@@ -28,7 +28,7 @@ function getTodayHours(
 export default function AgencyCard({ agency }: AgencyCardProps) {
   const todayHours = getTodayHours(agency.openingHours);
   const displayedServices = agency.services.slice(0, 4);
-  const heroImage = agency.image;
+  const heroImage = agency.heroImage || agency.image;
 
   return (
     <article
