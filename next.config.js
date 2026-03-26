@@ -29,7 +29,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.supabase.co https://images.pexels.com https://spidervo.s3.fr-par.scw.cloud https://www.google-analytics.com; connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://nominatim.openstreetmap.org https://*.tile.openstreetmap.org https://*.tile.openstreetmap.fr; frame-src 'self' https://www.google.com;",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.supabase.co https://images.pexels.com https://spidervo.s3.fr-par.scw.cloud https://www.google-analytics.com https://*.tile.openstreetmap.org https://*.tile.openstreetmap.fr https://unpkg.com; connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://nominatim.openstreetmap.org https://*.tile.openstreetmap.org https://*.tile.openstreetmap.fr; frame-src 'self' https://www.google.com;",
           },
           {
             key: 'X-DNS-Prefetch-Control',
