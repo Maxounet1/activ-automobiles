@@ -49,11 +49,11 @@ export default function QuickFilters({ filters, onFiltersChange, onReset }: Quic
 
   return (
     <div
-      className="w-full overflow-x-auto scrollbar-none py-3 px-4 sm:px-6 lg:px-8"
+      className="w-full overflow-x-auto scrollbar-none py-3 px-4 sm:px-6 lg:px-8 sticky top-[57px] z-30"
       style={{
         borderBottom: '1px solid rgba(226,232,240,0.6)',
-        background: 'rgba(248,250,252,0.8)',
-        backdropFilter: 'blur(8px)',
+        background: 'rgba(248,250,252,0.95)',
+        backdropFilter: 'blur(16px)',
       }}
     >
       <div className="flex items-center gap-2 max-w-screen-xl mx-auto flex-nowrap">

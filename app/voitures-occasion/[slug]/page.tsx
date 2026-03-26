@@ -1,8 +1,11 @@
+export const dynamicParams = true;
+
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronLeft, MapPin, Calendar, Gauge, Fuel, Settings2, Shield, Phone, CreditCard, CircleCheck as CheckCircle2, ArrowRight } from 'lucide-react';
 import { getVehicleBySlug, getAllVehicles, getRelatedVehicles } from '@/repository/vehicles';
+import { getAgencyById } from '@/repository/agencies';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -101,6 +104,9 @@ export default async function VehicleDetailPage({ params }: PageProps) {
   const galleryImgs = vehicle.images.slice(1);
 
   const relatedVehicles = await getRelatedVehicles(vehicle, 3);
+  const agency = await getAgencyById(vehicle.agencyId);
+  const agencyPhone = agency?.phone ?? '03 83 97 97 97';
+  const agencyPhoneTel = 'tel:+33' + agencyPhone.replace(/^0/, '').replace(/\s/g, '');
 
   const carJsonLd = {
     '@context': 'https://schema.org',
@@ -357,12 +363,12 @@ export default async function VehicleDetailPage({ params }: PageProps) {
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                   <a
-                    href="tel:+33XXXXXXXXX"
+                    href={agencyPhoneTel}
                     className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold transition-all hover:opacity-80"
                     style={{ background: '#F0FDF4', border: '1.5px solid #BBF7D0', color: '#16A34A' }}
                   >
                     <Phone className="w-4 h-4" />
-                    Appeler l&apos;agence
+                    {agencyPhone}
                   </a>
                   {vehicle.monthlyPrice && (
                     <Link
@@ -397,7 +403,7 @@ export default async function VehicleDetailPage({ params }: PageProps) {
                   </div>
                 </div>
                 <Link
-                  href="/agences"
+                  href={agency ? `/agences/${agency.slug}` : '/agences'}
                   className="mt-4 text-xs font-semibold inline-flex items-center gap-1 transition-all hover:gap-2"
                   style={{ color: '#1A3F6F' }}
                 >

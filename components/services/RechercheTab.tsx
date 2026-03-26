@@ -137,6 +137,44 @@ export default function RechercheTab() {
         </div>
       </div>
 
+      {/* Process Steps */}
+      <div className="mb-16">
+        <h3 className="text-2xl font-black text-gray-900 text-center mb-3">Comment trouver votre véhicule idéal ?</h3>
+        <p className="text-gray-400 text-sm text-center mb-10 max-w-xl mx-auto">
+          Trois approches pour trouver la voiture qui vous correspond.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          {[
+            { num: '01', title: 'Définissez vos critères', desc: 'Budget, marque, énergie, kilométrage, type de carrosserie… Affinez votre recherche selon vos besoins réels.' },
+            { num: '02', title: 'Consultez les résultats', desc: 'Parcourez les véhicules correspondants avec photos, caractéristiques et prix. Tout est transparent.' },
+            { num: '03', title: 'Contactez un conseiller', desc: 'Vous avez un doute ou un besoin spécifique ? Nos conseillers vous accompagnent par téléphone ou en agence.' },
+          ].map((step) => (
+            <div key={step.num} className="relative bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#1A3F6F]/30 hover:shadow-md transition-all">
+              <span className="text-4xl font-black leading-none mb-4 block" style={{ color: 'rgba(26,63,111,0.10)' }}>{step.num}</span>
+              <p className="font-bold text-gray-900 text-sm mb-2">{step.title}</p>
+              <p className="text-gray-400 text-xs leading-relaxed">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Mini FAQ */}
+      <div className="mb-16">
+        <h3 className="text-xl font-black text-gray-900 text-center mb-8">Questions fréquentes — Recherche</h3>
+        <div className="max-w-3xl mx-auto space-y-4">
+          {[
+            { q: 'Puis-je demander un véhicule qui n’est pas en stock ?', a: 'Oui. Contactez nos conseillers avec vos critères précis. Nous pouvons sourcer un véhicule spécifique dans notre réseau.' },
+            { q: 'Les véhicules affichés sont-ils réellement disponibles ?', a: 'Oui, à 100%. Notre stock est actualisé en temps réel. Si un véhicule est affiché, il est disponible.' },
+            { q: 'Puis-je essayer un véhicule avant d’acheter ?', a: 'Bien sûr. Prenez rendez-vous en agence pour un essai routier. Nos conseillers vous accueillent du lundi au samedi.' },
+          ].map((item) => (
+            <div key={item.q} className="rounded-2xl bg-white border border-gray-200 p-5">
+              <p className="font-bold text-sm text-gray-900 mb-2">{item.q}</p>
+              <p className="text-sm text-gray-500 leading-relaxed">{item.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
         {[

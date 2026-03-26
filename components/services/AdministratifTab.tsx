@@ -176,6 +176,44 @@ export default function AdministratifTab() {
         </div>
       </div>
 
+      {/* Process Steps */}
+      <div className="mb-16">
+        <h3 className="text-2xl font-black text-gray-900 text-center mb-3">Votre dossier en 3 étapes</h3>
+        <p className="text-gray-400 text-sm text-center mb-10 max-w-xl mx-auto">
+          De l&apos;achat à la réception de votre carte grise, on gère tout.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          {[
+            { num: '01', title: 'Constitution du dossier', desc: 'Nous rassemblons les pièces nécessaires : pièce d’identité, justificatif de domicile, permis de conduire. Nous vérifions tout pour éviter les retours.' },
+            { num: '02', title: 'Dépôt et suivi', desc: 'Votre dossier est déposé auprès de l’ANTS. Nous suivons l’avancement et vous tenons informé par email ou téléphone.' },
+            { num: '03', title: 'Réception de la carte grise', desc: 'Votre carte grise arrive directement chez vous par courrier recommandé, sans déplacement en préfecture.' },
+          ].map((step) => (
+            <div key={step.num} className="relative bg-white border border-gray-200 rounded-2xl p-6 hover:border-gray-300 hover:shadow-md transition-all">
+              <span className="text-4xl font-black leading-none mb-4 block" style={{ color: 'rgba(55,65,81,0.10)' }}>{step.num}</span>
+              <p className="font-bold text-gray-900 text-sm mb-2">{step.title}</p>
+              <p className="text-gray-400 text-xs leading-relaxed">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Mini FAQ */}
+      <div className="mb-16">
+        <h3 className="text-xl font-black text-gray-900 text-center mb-8">Questions fréquentes — Administratif</h3>
+        <div className="max-w-3xl mx-auto space-y-4">
+          {[
+            { q: 'Dois-je me déplacer en préfecture ?', a: 'Non. Nous gérons l’intégralité des démarches à votre place. La carte grise est envoyée directement chez vous par courrier.' },
+            { q: 'Quel délai pour recevoir ma carte grise ?', a: 'En général, vous recevez votre carte grise sous 5 à 10 jours ouvrés après validation du dossier. Un certificat provisoire vous permet de circuler en attendant.' },
+            { q: 'Le service est-il payant ?', a: 'Le coût des formalités (taxe régionale, frais de carte grise) est à votre charge. La gestion administrative par notre équipe est incluse dans l’achat.' },
+          ].map((item) => (
+            <div key={item.q} className="rounded-2xl bg-white border border-gray-200 p-5">
+              <p className="font-bold text-sm text-gray-900 mb-2">{item.q}</p>
+              <p className="text-sm text-gray-500 leading-relaxed">{item.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Stats band */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
         {[

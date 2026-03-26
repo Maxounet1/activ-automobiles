@@ -1,7 +1,20 @@
 import Link from 'next/link';
-import { ArrowRight, CircleCheck as CheckCircle, Tag } from 'lucide-react';
+import { ArrowRight, CircleCheck as CheckCircle, Tag, HelpCircle } from 'lucide-react';
 
 export default function RepriseTab() {
+  const steps = [
+    { num: '01', title: 'Estimation en ligne', desc: 'Renseignez les informations de votre véhicule (marque, modèle, kilométrage, état). Vous recevez une première estimation indicative en quelques minutes.' },
+    { num: '02', title: 'Offre ferme sous 24h', desc: 'Nos experts analysent votre dossier et vous transmettent une offre de reprise ferme par email ou téléphone, sans engagement de votre part.' },
+    { num: '03', title: 'Expertise en agence', desc: 'Si l\'offre vous convient, prenez rendez-vous en agence. Nos techniciens réalisent un contrôle rapide pour confirmer le montant.' },
+    { num: '04', title: 'Paiement ou déduction', desc: 'Recevez le paiement immédiat par virement ou utilisez la valeur de reprise comme apport pour votre prochain véhicule.' },
+  ];
+
+  const faq = [
+    { q: 'Mon véhicule a plus de 150 000 km, est-il accepté ?', a: 'Oui. Nous reprenons tous les véhicules, quel que soit le kilométrage, la marque ou l\'ancienneté. L\'offre sera ajustée en conséquence.' },
+    { q: 'L\'estimation est-elle engageante ?', a: 'Non. L\'estimation en ligne est indicative et gratuite. Vous êtes libre d\'accepter ou de refuser l\'offre ferme sans aucun frais.' },
+    { q: 'Puis-je faire reprendre mon véhicule sans en acheter un nouveau ?', a: 'Tout à fait. La reprise peut se faire indépendamment d\'un achat. Vous recevrez un paiement par virement sous 48h.' },
+  ];
+
   return (
     <div>
       {/* Hero */}
@@ -81,6 +94,44 @@ export default function RepriseTab() {
             <p className="text-xs" style={{ color: '#64748B' }}>{s.label}</p>
           </div>
         ))}
+      </div>
+
+      {/* Process steps */}
+      <div className="mb-16">
+        <h3 className="text-2xl font-black text-gray-900 text-center mb-3">Comment ça marche ?</h3>
+        <p className="text-gray-400 text-sm text-center mb-10 max-w-xl mx-auto">
+          Un processus simple en 4 étapes, sans engagement et sans surprise.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {steps.map((step) => (
+            <div
+              key={step.num}
+              className="relative bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#1A3F6F]/30 hover:shadow-md transition-all group"
+            >
+              <span className="text-4xl font-black leading-none mb-4 block" style={{ color: 'rgba(26,63,111,0.10)' }}>
+                {step.num}
+              </span>
+              <p className="font-bold text-gray-900 text-sm mb-2">{step.title}</p>
+              <p className="text-gray-400 text-xs leading-relaxed">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Mini FAQ */}
+      <div className="mb-16">
+        <div className="flex items-center gap-2 justify-center mb-8">
+          <HelpCircle className="w-5 h-5" style={{ color: '#1A3F6F' }} />
+          <h3 className="text-xl font-black text-gray-900">Questions fréquentes — Reprise</h3>
+        </div>
+        <div className="max-w-3xl mx-auto space-y-4">
+          {faq.map((item) => (
+            <div key={item.q} className="rounded-2xl bg-white border border-gray-200 p-5">
+              <p className="font-bold text-sm text-gray-900 mb-2">{item.q}</p>
+              <p className="text-sm text-gray-500 leading-relaxed">{item.a}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* CTA */}

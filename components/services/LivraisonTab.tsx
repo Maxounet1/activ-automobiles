@@ -83,6 +83,45 @@ export default function LivraisonTab() {
         ))}
       </div>
 
+      {/* Process Steps */}
+      <div className="mb-16">
+        <h3 className="text-2xl font-black text-gray-900 text-center mb-3">Comment se déroule la livraison ?</h3>
+        <p className="text-gray-400 text-sm text-center mb-10 max-w-xl mx-auto">
+          Un processus clair, du choix du véhicule à la remise des clés.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {[
+            { num: '01', title: 'Choix du véhicule', desc: 'Vous validez votre achat en ligne ou en agence. Le véhicule entre en préparation.' },
+            { num: '02', title: 'Préparation en atelier', desc: 'Révision complète, nettoyage intérieur et extérieur, vérification documentaire.' },
+            { num: '03', title: 'Acheminement', desc: 'Votre véhicule est transporté par camion porte-voitures vers un centre partenaire proche de chez vous.' },
+            { num: '04', title: 'Remise des clés', desc: 'Vous récupérez votre véhicule avec tous les documents (carte grise, garantie, carnet d\'entretien).' },
+          ].map((step) => (
+            <div key={step.num} className="relative bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#1A3F6F]/30 hover:shadow-md transition-all">
+              <span className="text-4xl font-black leading-none mb-4 block" style={{ color: 'rgba(26,63,111,0.10)' }}>{step.num}</span>
+              <p className="font-bold text-gray-900 text-sm mb-2">{step.title}</p>
+              <p className="text-gray-400 text-xs leading-relaxed">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Mini FAQ */}
+      <div className="mb-16">
+        <h3 className="text-xl font-black text-gray-900 text-center mb-8">Questions fréquentes — Livraison</h3>
+        <div className="max-w-3xl mx-auto space-y-4">
+          {[
+            { q: 'Combien coûte la livraison ?', a: 'Le coût de la livraison dépend de la distance entre l\'agence et votre centre partenaire. Contactez-nous pour obtenir un tarif précis.' },
+            { q: 'Puis-je venir chercher le véhicule directement en agence ?', a: 'Bien sûr. Vous êtes libre de récupérer votre véhicule directement dans l\'agence où il se trouve, sans frais de livraison.' },
+            { q: 'Que se passe-t-il si le véhicule ne me convient pas à la réception ?', a: 'Vous disposez d\'un délai légal de rétractation pour tout achat à distance. Le véhicule peut être retourné dans les conditions prévues.' },
+          ].map((item) => (
+            <div key={item.q} className="rounded-2xl bg-white border border-gray-200 p-5">
+              <p className="font-bold text-sm text-gray-900 mb-2">{item.q}</p>
+              <p className="text-sm text-gray-500 leading-relaxed">{item.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* CTA */}
       <div className="rounded-3xl overflow-hidden p-10 text-center relative border border-[#1A3F6F]/20"
         style={{ background: 'linear-gradient(135deg, #1A3F6F 0%, #0f2548 100%)' }}>
@@ -91,7 +130,7 @@ export default function LivraisonTab() {
         <div className="relative z-10">
           <h3 className="text-2xl font-black text-white mb-3">Prêt à recevoir votre véhicule ?</h3>
           <p className="text-blue-100/80 mb-6 max-w-lg mx-auto text-sm leading-relaxed">
-            Contactez-nous pour organiser votre livraison dans un centre partenaires proche de chez vous. Notre équipe est disponible du lundi au samedi.
+            Contactez-nous pour organiser votre livraison dans un centre partenaire proche de chez vous. Notre équipe est disponible du lundi au samedi.
           </p>
           <Link href="/contact"
             className="inline-flex items-center gap-2 bg-white text-[#1A3F6F] font-bold px-7 py-3.5 rounded-xl hover:bg-gray-100 transition-all text-sm">
