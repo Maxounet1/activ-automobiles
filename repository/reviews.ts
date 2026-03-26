@@ -1,18 +1,17 @@
 import type { Review } from '@/lib/types';
+import reviewsData from '@/lib/data/reviews.json';
 
-/**
- * Reviews repository — returns empty data since the Supabase reviews table
- * doesn't exist. Replace with real data when Supabase tables are created.
- */
+const reviews: Review[] = reviewsData as Review[];
 
 export async function getAllReviews(): Promise<Review[]> {
-  return [];
+  return reviews;
 }
 
-export async function getReviewsByAgency(_agencyId: string): Promise<Review[]> {
-  return [];
+export async function getReviewsByAgency(agencyId: string): Promise<Review[]> {
+  return reviews.filter((r) => r.agencyId === agencyId);
 }
 
 export async function getAverageRating(): Promise<number> {
-  return 0;
+  if (reviews.length === 0) return 0;
+  return reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
 }
