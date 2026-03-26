@@ -1,104 +1,40 @@
-import { supabase } from '@/lib/supabase';
 import type { BlogPost } from '@/lib/types';
+import blogData from '@/lib/data/blog.json';
 
-function mapRow(row: Record<string, unknown>): BlogPost {
-  return {
-    id: row.id as string,
-    slug: row.slug as string,
-    title: row.title as string,
-    excerpt: row.excerpt as string,
-    content: row.content as string,
-    author: row.author as string,
-    category: row.category as string,
-    tags: row.tags as string[],
-    image: row.image as string,
-    publishedAt: row.published_at as string,
-    readTime: row.read_time as number,
-    featured: row.featured as boolean,
-  };
-}
+// ─── Local JSON data source ────────────────────────────────────────────────────
+// Reads the 40 articles from lib/data/blog.json (originally from Bolt import).
+// Sorted by publishedAt descending by default.
+
+const posts: BlogPost[] = (blogData as BlogPost[]).sort(
+  (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+);
 
 export async function getAllPosts(): Promise<BlogPost[]> {
-  try {
-    const { data, error } = await supabase
-      .from('blog_posts')
-      .select('*')
-      .order('published_at', { ascending: false });
-    if (error) throw error;
-    return (data ?? []).map(mapRow);
-  } catch (err) {
-    console.error('[blog] getAllPosts error:', err);
-    return [];
-  }
+  return posts;
 }
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
-  try {
-    const { data, error } = await supabase.from('blog_posts').select('*').eq('slug', slug).maybeSingle();
-    if (error) throw error;
-    return data ? mapRow(data) : null;
-  } catch (err) {
-    console.error('[blog] getPostBySlug error:', err);
-    return null;
-  }
+  return posts.find((p) => p.slug === slug) ?? null;
 }
 
 export async function getFeaturedPosts(limit = 3): Promise<BlogPost[]> {
-  try {
-    const { data, error } = await supabase
-      .from('blog_posts')
-      .select('*')
-      .eq('featured', true)
-      .order('published_at', { ascending: false })
-      .limit(limit);
-    if (error) throw error;
-    return (data ?? []).map(mapRow);
-  } catch (err) {
-    console.error('[blog] getFeaturedPosts error:', err);
-    return [];
-  }
+  return posts.filter((p) => p.featured).slice(0, limit);
 }
 
 export async function getPostsByCategory(category: string): Promise<BlogPost[]> {
-  try {
-    const { data, error } = await supabase
-      .from('blog_posts')
-      .select('*')
-      .eq('category', category)
-      .order('published_at', { ascending: false });
-    if (error) throw error;
-    return (data ?? []).map(mapRow);
-  } catch (err) {
-    console.error('[blog] getPostsByCategory error:', err);
-    return [];
-  }
+  return posts.filter((p) => p.category === category);
 }
 
 export async function getRelatedPosts(post: BlogPost, limit = 3): Promise<BlogPost[]> {
-  try {
-    const { data, error } = await supabase
-      .from('blog_posts')
-      .select('*')
-      .neq('id', post.id)
-      .eq('category', post.category)
-      .order('published_at', { ascending: false })
-      .limit(limit);
-    if (error) throw error;
-    const related = (data ?? []).map(mapRow);
-    if (related.length >= limit) return related;
-    const ids = related.map(p => p.id);
-    ids.push(post.id);
-    const { data: tagMatches, error: tagError } = await supabase
-      .from('blog_posts')
-      .select('*')
-      .not('id', 'in', `(${ids.join(',')})`)
-      .overlaps('tags', post.tags)
-      .order('published_at', { ascending: false })
-      .limit(limit - related.length);
-    if (tagError) throw tagError;
-    return [...related, ...(tagMatches ?? []).map(mapRow)];
-  } catch (err) {
-    console.error('[blog] getRelatedPosts error:', err);
-    return [];
-  }
+  // 1. Same category
+  const sameCategory = posts.filter((p) => p.id !== post.id && p.category === post.category).slice(0, limit);
+  if (sameCategory.length >= limit) return sameCategory;
+
+  // 2. Fill with tag matches
+  const usedIds = new Set([post.id, ...sameCategory.map((p) => p.id)]);
+  const tagMatches = posts
+    .filter((p) => !usedIds.has(p.id) && p.tags.some((t) => post.tags.includes(t)))
+    .slice(0, limit - sameCategory.length);
+
+  return [...sameCategory, ...tagMatches];
 }
