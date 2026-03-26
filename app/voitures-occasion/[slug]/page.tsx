@@ -1,4 +1,5 @@
 export const dynamicParams = true;
+export const dynamic = 'force-dynamic';
 
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -12,8 +13,9 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const vehicles = await getAllVehicles();
-  return vehicles.map(v => ({ slug: v.slug }));
+  // Return empty array — pages are rendered on-demand via dynamicParams = true
+  // This prevents build failures when SpiderVO feed is unreachable
+  return [];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
