@@ -27,8 +27,8 @@ interface HomeSearchWidgetProps {
 
 export default function HomeSearchWidget({ vehicles = [] }: HomeSearchWidgetProps) {
   const router = useRouter();
-  const [maxBudget, setMaxBudget] = useState(60000);
-  const [maxMileage, setMaxMileage] = useState(100000);
+  const [maxBudget, setMaxBudget] = useState(80000);
+  const [maxMileage, setMaxMileage] = useState(200000);
   const [selectedFuel, setSelectedFuel] = useState('');
   const [showAdvanced, setShowAdvanced] = useState(false);
   // TEMPORARILY DISABLED - AI Feature
@@ -63,8 +63,8 @@ export default function HomeSearchWidget({ vehicles = [] }: HomeSearchWidgetProp
 
   const handleSearch = () => {
     const params = new URLSearchParams();
-    if (maxBudget < 60000) params.set('budget', String(maxBudget));
-    if (maxMileage < 100000) params.set('km', String(maxMileage));
+    if (maxBudget < 80000) params.set('budget', String(maxBudget));
+    if (maxMileage < 200000) params.set('km', String(maxMileage));
     if (selectedFuel) params.set('fuel', selectedFuel);
     if (advancedFilters.brand) params.set('brand', advancedFilters.brand);
     if (advancedFilters.model) params.set('model', advancedFilters.model);
