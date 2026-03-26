@@ -21,7 +21,7 @@ export default function PremiumBudgetSlider({ value, onChange, light = false }: 
     }).format(price);
   };
 
-  const percentage = (value / 80000) * 100;
+  const percentage = (value / 130000) * 100;
 
   return (
     <div className="space-y-3">
@@ -55,7 +55,7 @@ export default function PremiumBudgetSlider({ value, onChange, light = false }: 
         <input
           type="range"
           min="5000"
-          max="80000"
+          max="130000"
           step="1000"
           value={value}
           onChange={(e) => onChange(Number(e.target.value))}
@@ -99,7 +99,7 @@ export default function PremiumBudgetSlider({ value, onChange, light = false }: 
 
       <div className="flex justify-between text-xs font-semibold" style={{ color: light ? 'rgba(26,63,111,0.45)' : 'rgba(255,255,255,0.4)' }}>
         <span>5 000 €</span>
-        <span>80 000 €</span>
+        <span>130 000 €</span>
       </div>
     </div>
   );

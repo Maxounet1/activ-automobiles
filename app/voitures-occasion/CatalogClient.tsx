@@ -36,7 +36,7 @@ function useInitialFilters(): SearchFilters {
   return {
     brand: searchParams.get('brand') ?? '',
     model: searchParams.get('model') ?? '',
-    maxBudget: searchParams.get('budget') ? Number(searchParams.get('budget')) : 80000,
+    maxBudget: searchParams.get('budget') ? Number(searchParams.get('budget')) : 130000,
     maxMileage: searchParams.get('km') ? Number(searchParams.get('km')) : 200000,
     fuel: searchParams.get('fuel') ?? '',
     yearMin: searchParams.get('yearMin') ? Number(searchParams.get('yearMin')) : 2010,
@@ -91,7 +91,7 @@ export default function CatalogClient({ vehicles }: CatalogClientProps) {
     setFilters({
       brand: '',
       model: '',
-      maxBudget: 80000,
+      maxBudget: 130000,
       maxMileage: 200000,
       fuel: '',
       yearMin: 2010,

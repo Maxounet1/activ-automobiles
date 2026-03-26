@@ -37,7 +37,7 @@ export default function IntelligentSearchEngine({
   vehiclesCount,
   allVehicles
 }: IntelligentSearchEngineProps) {
-  const [maxBudget, setMaxBudget] = useState(80000);
+  const [maxBudget, setMaxBudget] = useState(130000);
   const [maxMileage, setMaxMileage] = useState(200000);
   const [selectedFuel, setSelectedFuel] = useState('');
   const [showAdvanced, setShowAdvanced] = useState(false);

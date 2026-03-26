@@ -27,7 +27,7 @@ interface HomeSearchWidgetProps {
 
 export default function HomeSearchWidget({ vehicles = [] }: HomeSearchWidgetProps) {
   const router = useRouter();
-  const [maxBudget, setMaxBudget] = useState(80000);
+  const [maxBudget, setMaxBudget] = useState(130000);
   const [maxMileage, setMaxMileage] = useState(200000);
   const [selectedFuel, setSelectedFuel] = useState('');
   const [showAdvanced, setShowAdvanced] = useState(false);
@@ -63,7 +63,7 @@ export default function HomeSearchWidget({ vehicles = [] }: HomeSearchWidgetProp
 
   const handleSearch = () => {
     const params = new URLSearchParams();
-    if (maxBudget < 80000) params.set('budget', String(maxBudget));
+    if (maxBudget < 130000) params.set('budget', String(maxBudget));
     if (maxMileage < 200000) params.set('km', String(maxMileage));
     if (selectedFuel) params.set('fuel', selectedFuel);
     if (advancedFilters.brand) params.set('brand', advancedFilters.brand);
